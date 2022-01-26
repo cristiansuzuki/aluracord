@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
 import appConfig from "../config.json";
 
@@ -39,7 +40,7 @@ function Title(props) {
       <Tag>{props.children}</Tag>
       <style jsx>{`
         ${Tag} {
-          color: ${appConfig.theme.colors.neutrals["900"]};
+          color: ${appConfig.theme.colors.neutrals["010"]};
           font-size: 24px;
           font-weight: 600;
         }
@@ -61,7 +62,7 @@ function Title(props) {
 // export default HomePage;
 
 export default function PaginaInicial() {
-  const username = "cristiansuzuki";
+  const [username, setUsername] = useState("cristiansuzuki");
 
   return (
     <>
@@ -71,9 +72,9 @@ export default function PaginaInicial() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: appConfig.theme.colors.primary[500],
+          backgroundColor: appConfig.theme.colors.primary[0],
           backgroundImage:
-            "url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)",
+            "url(https://cdnb.artstation.com/p/assets/images/images/024/538/827/original/pixel-jeff-clipa-s.gif?1582740711)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundBlendMode: "multiply",
@@ -110,24 +111,29 @@ export default function PaginaInicial() {
               marginBottom: "32px",
             }}
           >
-            <Title tag="h2">Boas vindas de volta!</Title>
+            <Title tag="h2">Bem vindo de volta !</Title>
             <Text
               variant="body3"
               styleSheet={{
                 marginBottom: "32px",
-                color: appConfig.theme.colors.neutrals[300],
+                color: appConfig.theme.colors.neutrals["010"],
               }}
             >
               {appConfig.name}
             </Text>
 
             <TextField
+              value={username}
+              onChange={(event) => {
+                const valor = event.target.value;
+                setUsername(valor);
+              }}
               fullWidth
               textFieldColors={{
                 neutral: {
                   textColor: appConfig.theme.colors.neutrals[200],
                   mainColor: appConfig.theme.colors.neutrals[900],
-                  mainColorHighlight: appConfig.theme.colors.primary[500],
+                  mainColorHighlight: appConfig.theme.colors.primary["010"],
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
               }}
@@ -137,10 +143,10 @@ export default function PaginaInicial() {
               label="Entrar"
               fullWidth
               buttonColors={{
-                contrastColor: appConfig.theme.colors.neutrals["000"],
-                mainColor: appConfig.theme.colors.primary[500],
-                mainColorLight: appConfig.theme.colors.primary[400],
-                mainColorStrong: appConfig.theme.colors.primary[600],
+                contrastColor: appConfig.theme.colors.neutrals["100"],
+                mainColor: appConfig.theme.colors.primary["020"],
+                mainColorLight: appConfig.theme.colors.primary["010"],
+                mainColorStrong: appConfig.theme.colors.primary["010"],
               }}
             />
           </Box>
