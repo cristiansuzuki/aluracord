@@ -103,6 +103,18 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
+            <Button
+              onClick={() => {
+                handleNovaMensagem(mensagem);
+              }}
+              label="Enviar mensagem"
+              buttonColors={{
+                contrastColor: appConfig.theme.colors.neutrals["100"],
+                mainColor: appConfig.theme.colors.primary["020"],
+                mainColorLight: appConfig.theme.colors.primary["010"],
+                mainColorStrong: appConfig.theme.colors.primary["010"],
+              }}
+            />
           </Box>
         </Box>
       </Box>
