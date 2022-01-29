@@ -32,7 +32,7 @@ function Title(props) {
 // export default HomePage;
 
 export default function PaginaInicial() {
-  const [username, setUsername] = useState("cristiansuzuki");
+  const [username, setUsername] = useState("");
   const roteamento = useRouter();
 
   return (
@@ -73,8 +73,7 @@ export default function PaginaInicial() {
             as="form"
             onSubmit={(InfosDoEvento) => {
               InfosDoEvento.preventDefault();
-              console.log("Alguem submeteu um form.");
-              roteamento.push("/chat");
+              roteamento.push(`/chat?username=${username}`);
             }}
             styleSheet={{
               display: "flex",
