@@ -19,18 +19,6 @@ function Title(props) {
   );
 }
 
-// function HomePage() {
-//   return (
-//     <div>
-//       <GlobalStyle />
-//       <Title tag="h2">Boas vindas de volta!!!!</Title>
-//       <h2>Discord - Alura Matrix</h2>
-//     </div>
-//   );
-// }
-
-// export default HomePage;
-
 export default function PaginaInicial() {
   const [username, setUsername] = useState("");
   const roteamento = useRouter();
@@ -68,7 +56,6 @@ export default function PaginaInicial() {
             backgroundColor: appConfig.theme.colors.neutrals[700],
           }}
         >
-          {/* Formulário */}
           <Box
             as="form"
             onSubmit={(InfosDoEvento) => {
@@ -125,9 +112,7 @@ export default function PaginaInicial() {
               }}
             />
           </Box>
-          {/* Formulário */}
 
-          {/* Photo Area */}
           <Box
             styleSheet={{
               display: "flex",
@@ -162,7 +147,6 @@ export default function PaginaInicial() {
               {username}
             </Text>
           </Box>
-          {/* Photo Area */}
         </Box>
       </Box>
     </>

@@ -103,13 +103,7 @@ export default function ChatPage() {
           }}
         >
           <MessageList mensagens={listaDeMensagens} />
-          {/* {listaDeMensagens.map((mensagemAtual) => {
-            return (
-              <li key={mensagemAtual.id}>
-                {mensagemAtual.de}: {mensagemAtual.texto}
-              </li>
-            );
-          })} */}
+
           <Box
             as="form"
             styleSheet={{
