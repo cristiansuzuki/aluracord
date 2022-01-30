@@ -5,6 +5,7 @@ import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
+import { MessageList } from "../src/components/MessageList";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM0MTA2MSwiZXhwIjoxOTU4OTE3MDYxfQ.C9VwipsgS_zKoSyFe1i6KE0wJpOgKCuaCuU95Sn-VV0";
@@ -30,6 +31,21 @@ export default function ChatPage() {
   const usuarioLogado = roteamento.query.username;
   const [mensagem, setMensagem] = useState("");
   const [listaDeMensagens, setListaDeMensagens] = useState([]);
+
+  function handleDeleteMensagem(mensagemAtual) {
+    // excluir a mensagem primeiro no supabase e depois no useState
+    supabaseClient
+      .from("mensagens")
+      .delete()
+      .match({ id: mensagemAtual.id })
+      .then(({ data }) => {
+        // lista filtrada
+        const messagesListFiltered = listaDeMensagens.filter((mensagem) => {
+          return mensagem.id != data[0].id;
+        });
+        setListaDeMensagens(messagesListFiltered);
+      });
+  }
 
   useEffect(() => {
     supabaseClient
@@ -102,7 +118,10 @@ export default function ChatPage() {
             padding: "16px",
           }}
         >
-          <MessageList mensagens={listaDeMensagens} />
+          <MessageList
+            mensagens={listaDeMensagens}
+            handleDeleteMensagem={handleDeleteMensagem}
+          />
 
           <Box
             as="form"
@@ -141,7 +160,10 @@ export default function ChatPage() {
                 handleNovaMensagem(":sticker: " + sticker);
               }}
             />
-            <Button
+
+            {/* Botão de enviar mensagem  */}
+
+            {/* <Button
               onClick={() => {
                 handleNovaMensagem(mensagem);
               }}
@@ -152,7 +174,7 @@ export default function ChatPage() {
                 mainColorLight: appConfig.theme.colors.primary["010"],
                 mainColorStrong: appConfig.theme.colors.primary["010"],
               }}
-            />
+            /> */}
           </Box>
         </Box>
       </Box>
@@ -181,71 +203,5 @@ function Header() {
         />
       </Box>
     </>
-  );
-}
-
-function MessageList(props) {
-  return (
-    <Box
-      tag="ul"
-      styleSheet={{
-        overflow: "overlay",
-        display: "flex",
-        flexDirection: "column-reverse",
-        flex: 1,
-        color: appConfig.theme.colors.neutrals["000"],
-        marginBottom: "16px",
-      }}
-    >
-      {props.mensagens.map((mensagem) => {
-        return (
-          <Text
-            key={mensagem.id}
-            tag="li"
-            styleSheet={{
-              borderRadius: "5px",
-              padding: "6px",
-              marginBottom: "12px",
-              hover: {
-                backgroundColor: appConfig.theme.colors.neutrals[700],
-              },
-            }}
-          >
-            <Box
-              styleSheet={{
-                marginBottom: "8px",
-              }}
-            >
-              <Image
-                styleSheet={{
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "50%",
-                  display: "inline-block",
-                  marginRight: "8px",
-                }}
-                src={`https://github.com/${mensagem.de}.png`}
-              />
-              <Text tag="strong">{mensagem.de}</Text>
-              <Text
-                styleSheet={{
-                  fontSize: "10px",
-                  marginLeft: "8px",
-                  color: appConfig.theme.colors.neutrals[300],
-                }}
-                tag="span"
-              >
-                {new Date().toLocaleDateString()}
-              </Text>
-            </Box>
-            {mensagem.texto.startsWith(":sticker:") ? (
-              <Image src={mensagem.texto.replace(":sticker:", "")} />
-            ) : (
-              mensagem.texto
-            )}
-          </Text>
-        );
-      })}
-    </Box>
   );
 }
