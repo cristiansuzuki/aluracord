@@ -33,13 +33,12 @@ export default function ChatPage() {
   const [listaDeMensagens, setListaDeMensagens] = useState([]);
 
   function handleDeleteMensagem(mensagemAtual) {
-    // excluir a mensagem primeiro no supabase e depois no useState
+    // Função para deletar mensagem
     supabaseClient
       .from("mensagens")
       .delete()
       .match({ id: mensagemAtual.id })
       .then(({ data }) => {
-        // lista filtrada
         const messagesListFiltered = listaDeMensagens.filter((mensagem) => {
           return mensagem.id != data[0].id;
         });
@@ -64,6 +63,7 @@ export default function ChatPage() {
   }, []);
 
   function handleNovaMensagem(novaMensagem) {
+    // Função para adicionar mensagem
     const mensagem = {
       de: usuarioLogado,
       texto: novaMensagem,
@@ -131,6 +131,26 @@ export default function ChatPage() {
             }}
           >
             <TextField
+              textFieldColors={{
+                neutral: {
+                  backgroundColor: appConfig.theme.colors.primary["010"],
+                  mainColor: appConfig.theme.colors.primary["010"],
+                  mainColorHighlight: appConfig.theme.colors.primary["010"],
+                  textColor: appConfig.theme.colors.primary["010"],
+                },
+                positive: {
+                  backgroundColor: appConfig.theme.colors.primary["010"],
+                  mainColor: appConfig.theme.colors.primary["010"],
+                  mainColorHighlight: appConfig.theme.colors.primary["010"],
+                  textColor: appConfig.theme.colors.primary["010"],
+                },
+                negative: {
+                  backgroundColor: appConfig.theme.colors.primary["010"],
+                  mainColor: appConfig.theme.colors.primary["010"],
+                  mainColorHighlight: appConfig.theme.colors.primary["010"],
+                  textColor: appConfig.theme.colors.primary["010"],
+                },
+              }}
               value={mensagem}
               onChange={() => {
                 const valor = event.target.value;
@@ -145,8 +165,8 @@ export default function ChatPage() {
               placeholder="Insira sua mensagem aqui..."
               type="textarea"
               styleSheet={{
+                borderColor: "transparent",
                 width: "100%",
-                border: "0",
                 resize: "none",
                 borderRadius: "5px",
                 padding: "6px 8px",

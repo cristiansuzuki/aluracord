@@ -76,7 +76,7 @@ export function MessageList(props) {
               </Text>
 
               <Button
-                /* botão para excluir a mensagem */
+                /* Botão para excluir a mensagem */
                 styleSheet={{
                   borderRadius: "25%",
                   width: "12px",
@@ -107,7 +107,7 @@ export function MessageList(props) {
                 buttonColors={{
                   mainColor: appConfig.theme.colors.neutrals["000"],
                 }}
-                // quando clicar vai chamar a função de excluir a mensagem
+                // Quando clicar vai chamar a função de excluir a mensagem
                 onClick={(event) => {
                   event.preventDefault();
                   handleDeleteMensagem(mensagem);
