@@ -171,7 +171,7 @@ export default function ChatPage() {
                 borderRadius: "5px",
                 padding: "6px 8px",
                 backgroundColor: appConfig.theme.colors.neutrals[800],
-                marginRight: "12px",
+                marginRight: "6px",
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
@@ -183,7 +183,7 @@ export default function ChatPage() {
 
             {/* Botão de enviar mensagem  */}
 
-            {/* <Button
+            <Button
               onClick={() => {
                 handleNovaMensagem(mensagem);
               }}
@@ -194,7 +194,7 @@ export default function ChatPage() {
                 mainColorLight: appConfig.theme.colors.primary["010"],
                 mainColorStrong: appConfig.theme.colors.primary["010"],
               }}
-            /> */}
+            />
           </Box>
         </Box>
       </Box>

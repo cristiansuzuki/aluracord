@@ -19,22 +19,19 @@ export function ButtonSendSticker(props) {
           mainColorStrong: appConfig.theme.colors.primary["010"],
         }}
         styleSheet={{
-          borderRadius: "50%",
+          borderRadius: "15%",
           padding: "0 3px 0 0",
-          minWidth: "50px",
-          minHeight: "50px",
+          minWidth: "46px",
+          minHeight: "46px",
           fontSize: "20px",
           marginBottom: "8px",
           lineHeight: "0",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          filter: isOpen ? "grayscale(0)" : "grayscale(1)",
-          hover: {
-            filter: "grayscale(0)",
-          },
+          marginRight: "6px",
         }}
-        label="😋"
+        label="😈"
         onClick={() => setOpenState(!isOpen)}
       />
       {isOpen && (
@@ -74,7 +71,7 @@ export function ButtonSendSticker(props) {
               justifyContent: "space-between",
               flex: 1,
               paddingTop: "16px",
-              overflow: "scroll",
+              overflow: "auto",
             }}
           >
             {appConfig.stickers.map((sticker) => (
