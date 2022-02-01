@@ -84,6 +84,7 @@ export default function PaginaInicial() {
             </Text>
 
             <TextField
+              placeholder="Usuário do GitHub"
               value={username}
               onChange={(event) => {
                 const valor = event.target.value;
