@@ -161,7 +161,9 @@ export default function ChatPage() {
               onKeyPress={(event) => {
                 if (event.key === "Enter") {
                   event.preventDefault();
-                  handleNovaMensagem(mensagem);
+                  if (mensagem != "") {
+                    handleNovaMensagem(mensagem);
+                  }
                 }
               }}
               placeholder="Insira sua mensagem aqui..."
@@ -215,8 +217,11 @@ export default function ChatPage() {
               styleSheet={{
                 borderRadius: "5px",
               }}
-              onClick={() => {
-                handleNovaMensagem(mensagem);
+              onClick={(event) => {
+                event.preventDefault();
+                if (mensagem != "") {
+                  handleNovaMensagem(mensagem);
+                }
               }}
             />
           </Box>
