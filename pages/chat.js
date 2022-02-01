@@ -47,6 +47,7 @@ export default function ChatPage() {
   }
 
   useEffect(() => {
+    // Use Effect que escuta alterações nas mensagens
     supabaseClient
       .from("mensagens")
       .select("*")
@@ -126,10 +127,10 @@ export default function ChatPage() {
           <Box
             as="form"
             styleSheet={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              flexDirection: 'row',
-          }}
+              display: "flex",
+              alignItems: "flex-start",
+              flexDirection: "row",
+            }}
           >
             <TextField
               textFieldColors={{
@@ -185,19 +186,35 @@ export default function ChatPage() {
             {/* Botão de enviar mensagem  */}
 
             <Button
-            size="lg"
-            variant='primary'
-            colorVariant = 'dark'
-            label={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>}
-            buttonColors={{
-              contrastColor: appConfig.theme.colors.neutrals["100"],
-              mainColor: appConfig.theme.colors.primary["020"],
-              mainColorLight: appConfig.theme.colors.primary["010"],
-              mainColorStrong: appConfig.theme.colors.primary["010"],
-            }}
-            styleSheet={{
-                borderRadius:'5px'
-            }}
+              size="lg"
+              variant="primary"
+              colorVariant="dark"
+              label={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-send"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              }
+              buttonColors={{
+                contrastColor: appConfig.theme.colors.neutrals["100"],
+                mainColor: appConfig.theme.colors.primary["020"],
+                mainColorLight: appConfig.theme.colors.primary["010"],
+                mainColorStrong: appConfig.theme.colors.primary["010"],
+              }}
+              styleSheet={{
+                borderRadius: "5px",
+              }}
               onClick={() => {
                 handleNovaMensagem(mensagem);
               }}
