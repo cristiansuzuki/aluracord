@@ -1,5 +1,7 @@
 import appConfig from "../config.json";
 
+// CSS Global para as páginas de código
+
 function GlobalStyle() {
   return (
     <style global jsx>{`
@@ -41,8 +43,12 @@ function GlobalStyle() {
 
       /* ./App fit Height */
     `}</style>
+
+    // scrollbar personalizada acima
   );
 }
+
+// Função principal do app
 
 export default function MyApp({ Component, pageProps }) {
   return (

@@ -125,7 +125,7 @@ export default function ChatPage() {
             padding: "16px",
           }}
         >
-
+          {/* Ternário para verificar Loading */}
           {loading ?
             <Box
             styleSheet={{
