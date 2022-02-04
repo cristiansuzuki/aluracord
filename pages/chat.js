@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 import { MessageList } from "../src/components/MessageList";
-import { Bars } from 'react-loading-icons'
+import { Bars } from "react-loading-icons";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzM0MTA2MSwiZXhwIjoxOTU4OTE3MDYxfQ.C9VwipsgS_zKoSyFe1i6KE0wJpOgKCuaCuU95Sn-VV0";
@@ -55,11 +55,10 @@ export default function ChatPage() {
       .select("*")
       .order("id", { ascending: false })
       .then(({ data }) => {
-
-        if(data != null){
-        setListaDeMensagens(data);
-      }
-      setLoading(false)
+        if (data != null) {
+          setListaDeMensagens(data);
+        }
+        setLoading(false);
       });
 
     escutaMensagensEmTempoReal((novaMensagem) => {
@@ -125,27 +124,29 @@ export default function ChatPage() {
             padding: "16px",
           }}
         >
+<<<<<<< HEAD
           {/* Ternário para verificar Loading */}
           {loading ?
+=======
+          {loading ? (
+>>>>>>> 86af315596aff8c1360d1089bd096810d26eb440
             <Box
-            styleSheet={{
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%'
-            }}
-        >
-            <Bars   
-                fill={appConfig.theme.colors.neutrals[800]} 
-                height='16px'
+              styleSheet={{
+                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
+              }}
+            >
+              <Bars fill={appConfig.theme.colors.neutrals[800]} height="50px" />
+            </Box>
+          ) : (
+            <MessageList
+              mensagens={listaDeMensagens}
+              handleDeleteMensagem={handleDeleteMensagem}
             />
-        </Box>
-        :
-        <MessageList mensagens={listaDeMensagens} handleDeleteMensagem={handleDeleteMensagem}/>
-    
-    }
-
+          )}
 
           <Box
             as="form"
