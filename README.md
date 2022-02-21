@@ -23,7 +23,7 @@ yarn
 ## Executando o projeto localmente
 
 ```bash
-yarn dev
+yarn start
 ```
 Isso irá rodar o projeto em um servidor local, caso uma janela do navegador não se inicie sozinha, clique no link gerado no terminal.
 
