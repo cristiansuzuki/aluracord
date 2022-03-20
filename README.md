@@ -29,4 +29,4 @@ Isso irá rodar o projeto em um servidor local, caso uma janela do navegador nã
 
 ## Contribuições
 
-Pull Requests são bem-vindos.
+Pull Requests são bem-vindos
