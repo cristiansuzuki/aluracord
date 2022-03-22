@@ -206,8 +206,6 @@ export default function ChatPage() {
               }}
             />
 
-            {/* Botão de enviar mensagem  */}
-
             <Button
               size="lg"
               variant="primary"
