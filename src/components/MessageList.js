@@ -16,6 +16,7 @@ export function MessageList(props) {
         marginBottom: "16px",
       }}
     >
+//       Map na lista de mensagens
       {props.mensagens.map((mensagem) => {
         return (
           <Text
